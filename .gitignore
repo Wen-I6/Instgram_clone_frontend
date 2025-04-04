@@ -7,8 +7,5 @@ node_modules/
 # Build output
 build/
 
-# Ignore a specific file
-README.md
-
 # Ignore a folder 
 instgram_clone_frontend/
