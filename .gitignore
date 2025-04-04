@@ -10,5 +10,5 @@ build/
 # Ignore a specific file
 README.md
 
-# Ignore a folder (adjust path as needed)
+# Ignore a folder 
 instgram_clone_frontend/
