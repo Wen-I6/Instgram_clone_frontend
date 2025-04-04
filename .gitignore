@@ -1,0 +1,14 @@
+# macOS system file
+.DS_Store
+
+# Node.js dependencies
+node_modules/
+
+# Build output
+build/
+
+# Ignore a specific file
+README.md
+
+# Ignore a folder (adjust path as needed)
+instgram_clone_frontend/
