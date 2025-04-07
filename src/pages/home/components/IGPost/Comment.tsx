@@ -1,4 +1,5 @@
 import { useState } from "react";
+import CommentModal from "./CommentModal";
 
 type IGPostProps = {
   likes: number;
@@ -16,9 +17,20 @@ const Comment: React.FC<IGPostProps> = ({
   account,
 }) => {
   const [like, setLike] = useState(likes);
+  const [heart, setHeart] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const likeClickHandler = () => {
-    setLike(like + 1);
+    if (heart) {
+      setLike(like - 1);
+    } else {
+      setLike(like + 1);
+    }
+    setHeart(!heart);
+  };
+
+  const commentClickHandler = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
   return (
@@ -27,8 +39,10 @@ const Comment: React.FC<IGPostProps> = ({
         <div className="flex">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-[28px] w-[28px] mr-2"
-            fill="none"
+            className={`h-[28px] w-[28px] mr-2 ${
+              heart ? "text-red-500" : "text-black"
+            }`}
+            fill={heart ? "red" : "none"}
             viewBox="0 0 24 24"
             stroke="currentColor"
             onClick={likeClickHandler}
@@ -46,6 +60,7 @@ const Comment: React.FC<IGPostProps> = ({
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            onClick={commentClickHandler}
           >
             <path
               strokeLinecap="round"
@@ -95,6 +110,15 @@ const Comment: React.FC<IGPostProps> = ({
         View all 999 comments
       </p>
       <p className="text-gray-400 text-[10px] mt-1">{createTime}</p>
+      {isModalOpen && (
+        <CommentModal
+          account={account}
+          description={description}
+          likes={like}
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </div>
   );
 };
