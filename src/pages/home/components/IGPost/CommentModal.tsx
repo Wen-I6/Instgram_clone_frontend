@@ -1,13 +1,14 @@
 type CommentModalProps = {
+  avatar: string;
   account: string;
   description: string;
   likes: number;
   isOpen: boolean;
-
   onClose: () => void;
 };
 
 const CommentModal: React.FC<CommentModalProps> = ({
+  avatar,
   account,
   description,
   likes,
@@ -16,9 +17,14 @@ const CommentModal: React.FC<CommentModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="px-1">
+    <div>
       <div className="flex justify-between box-border text-sm mt-4 mb-2">
         <div className="flex">
+          <img
+            src={avatar}
+            alt="Avatar"
+            className="rounded-full h-[24px] w-[24px]"
+          />
           <span className="font-bold mb-2 px-2">{account}</span>
           <span className="mb-2 px-2">{description}</span>
         </div>

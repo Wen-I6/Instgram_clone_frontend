@@ -27,6 +27,7 @@ const IGPost: React.FC<IGPostProps> = ({
       <IGUser account={account} location={location} avatar={avatar} />
       <img src={photo} alt="" />
       <Comment
+        avatar={avatar}
         account={account}
         likes={likes}
         description={description}

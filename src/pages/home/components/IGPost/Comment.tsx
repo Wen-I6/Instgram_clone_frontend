@@ -2,6 +2,7 @@ import { useState } from "react";
 import CommentModal from "./CommentModal";
 
 type IGPostProps = {
+  avatar: string;
   likes: number;
   description: string;
   hashTags: string;
@@ -10,6 +11,7 @@ type IGPostProps = {
 };
 
 const Comment: React.FC<IGPostProps> = ({
+  avatar,
   likes,
   description,
   hashTags,
@@ -112,6 +114,7 @@ const Comment: React.FC<IGPostProps> = ({
       <p className="text-gray-400 text-[10px] mt-1">{createTime}</p>
       {isModalOpen && (
         <CommentModal
+          avatar={avatar}
           account={account}
           description={description}
           likes={like}
