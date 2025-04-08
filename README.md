@@ -56,6 +56,17 @@ Located in: db.json
       "hashTags": "#鵝鵝",
       "createTime": "1 HOURS AGO"
     },
+        {
+      "id": 1,
+      "location": "Melbourne",
+      "account": "bruce_1234",
+      "avatar": "/images/avatars/a1.png",
+      "photo": "/images/posts/main3.png",
+      "likes": 224,
+      "description": "Hello from Melbourne!",
+      "hashTags": "#Mel",
+      "createTime": "5 HOURS AGO"
+    },
     {
       "id": 2,
       "location": "7-11你好門市",
@@ -172,6 +183,10 @@ Located in: db.json
 
 ## Future Goals
 
-- **Make the app interactive**: Allow users to leave comments, like posts, and follow other users.
-- **Enable profile viewing**: Enable users to click on a username and view their profile.
+- **Make the app interactive**: Allow users to leave comments, ✅ like posts, and ✅ follow other users.
+  ✅ **Enable profile viewing**: Enable users to click on a username and view their profile.
 - **Enhance social feature**: Add features like following users and seeing their posts
+- **Create Log in / Authentication**:
+  Frontend: Users are able to log in with their account (e.g., using a username/email and password, or through a third-party authentication provider like Google).
+
+  Backend: Issue a token (like a JWT) to validate the user credentials.

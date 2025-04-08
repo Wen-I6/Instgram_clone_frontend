@@ -1,6 +1,7 @@
 import { useAppDispatch } from "hooks";
 import { follow, unfollow } from "slices/friendSlice";
 import { memo } from "react";
+import { useNavigate } from "react-router-dom";
 
 type IGUserProps = {
   size?: "medium" | "small";
@@ -33,8 +34,17 @@ const IGUser: React.FC<IGUserProps> = memo(
       }
     };
 
+    const navigate = useNavigate();
+
+    const goToAccount = (account: string) => {
+      navigate(`account/${account}`);
+    };
+
     return (
-      <div className="flex h-[70px] items-center box-border px-4">
+      <div
+        className="flex h-[70px] items-center box-border px-4"
+        onClick={() => goToAccount(account || "")}
+      >
         <div
           className={`${
             size === "small" ? "w-[40px] h-[40px]" : "w-[60px] h-[60px]"

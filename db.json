@@ -12,6 +12,17 @@
       "createTime": "1 HOURS AGO"
     },
     {
+      "id": 1,
+      "location": "Melbourne",
+      "account": "bruce_1234",
+      "avatar": "/images/avatars/a1.png",
+      "photo": "/images/posts/main3.png",
+      "likes": 224,
+      "description": "Hello from Melbourne!",
+      "hashTags": "#Mel",
+      "createTime": "5 HOURS AGO"
+    },
+    {
       "id": 2,
       "location": "7-11你好門市",
       "account": "__0831_xxx__",
