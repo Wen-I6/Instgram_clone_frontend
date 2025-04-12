@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import type { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 
 type IGPost = {
   id: number;
@@ -14,11 +15,25 @@ type IGPost = {
 
 export const userApi = createApi({
   reducerPath: "userApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3004/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "/" }),
   endpoints: (builder) => ({
     getPostsByAccount: builder.query<IGPost[], string>({
-      query: (account) => {
-        return `posts?account=${account}`;
+      async queryFn(
+        account
+      ): Promise<{ data: IGPost[] } | { error: FetchBaseQueryError }> {
+        try {
+          const res = await fetch("/ig-post.json");
+          const data: IGPost[] = await res.json();
+          const filtered = data.filter((post) => post.account === account);
+          return { data: filtered };
+        } catch (err: any) {
+          return {
+            error: {
+              status: 500,
+              data: err.message || "Unknown error",
+            },
+          };
+        }
       },
     }),
   }),
