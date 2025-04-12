@@ -7,7 +7,11 @@ import Loading from "components/Loading";
 
 const UserProfile = () => {
   const { account } = useParams();
-  const { data: posts, isLoading, error } = useGetPostsByAccountQuery(account || "");
+  const {
+    data: posts,
+    isLoading,
+    error,
+  } = useGetPostsByAccountQuery(account || "");
 
   return (
     <>
