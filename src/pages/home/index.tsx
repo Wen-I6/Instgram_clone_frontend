@@ -8,7 +8,7 @@ import Loading from "components/Loading";
 import { useGetIGPostQuery } from "services/homeServices";
 
 const IGPostList: React.FC = () => {
-  const { data, isLoading } = useGetIGPostQuery("all");
+  const { data, isLoading, error } = useGetIGPostQuery("all");
   // const data = [
   //   {
   //     id: 1,
@@ -66,6 +66,9 @@ const IGPostList: React.FC = () => {
   //     createTime: "10 HOURS AGO",
   //   },
   // ];
+  if (error) {
+    return <div className="text-red-500">Failed to load stories.</div>;
+  }
 
   return (
     <>
@@ -74,6 +77,8 @@ const IGPostList: React.FC = () => {
           <Loading />
         </div>
       )}
+      {!isLoading && data?.length === 0 && <p>No stories found</p>}
+
       {!isLoading &&
         data?.map((item) => {
           const {
