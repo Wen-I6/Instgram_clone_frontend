@@ -18,24 +18,27 @@ type IGStory = {
   avatar: string;
 };
 
+const isDev = process.env.NODE_ENV === "development";
+const baseUrl = isDev ? "http://localhost:3004/" : "";
+
 export const homeApi = createApi({
-  reducerPath: "homepi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3004/" }),
+  reducerPath: "homeApi",
+  baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
     getIGStory: builder.query<IGStory[], number | "all">({
       query: (id) => {
         if (id !== "all") {
-          return `stories/${id}`;
+          return isDev ? `stories/${id}` : `ig-story.json`;
         }
-        return "stories";
+        return isDev ? "stories" : "ig-story.json";
       },
     }),
     getIGPost: builder.query<IGPost[], number | "all">({
       query: (id) => {
         if (id !== "all") {
-          return `posts/${id}`;
+          return isDev ? `posts/${id}` : `ig-post.json`;
         }
-        return "posts";
+        return isDev ? "posts" : "ig-post.json";
       },
     }),
   }),
