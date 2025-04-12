@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { homeApi } from "services/homeServices";
 import { userApi } from "services/userService";
 import friendReducer from "slices/friendSlice";
