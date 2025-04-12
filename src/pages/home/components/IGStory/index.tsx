@@ -3,7 +3,7 @@ import { useGetIGStoryQuery } from "services/homeServices";
 import Loading from "components/Loading";
 
 const IGStory: React.FC = () => {
-  const { data, isLoading } = useGetIGStoryQuery("all");
+  const { data, isLoading, error } = useGetIGStoryQuery("all");
 
   // console.log('data', data)
   // console.log('isloading', isLoading)
@@ -61,6 +61,9 @@ const IGStory: React.FC = () => {
   //     avatar: "/images/avatars/a10.png",
   //   },
   // ];
+  if (error) {
+    return <div className="text-red-500">Failed to load stories.</div>;
+  }
 
   return (
     <div className="w-full h-[110px] box-border flex items-center overflow-x-auto overflow-y-hidden shadow-md no-scrollbar lg:my-8">
@@ -74,6 +77,7 @@ const IGStory: React.FC = () => {
           const { id, name, avatar } = item;
           return <Item key={id} name={name} avatar={avatar} />;
         })}
+      {!isLoading && data?.length === 0 && <p>No stories found</p>}
     </div>
   );
 };
